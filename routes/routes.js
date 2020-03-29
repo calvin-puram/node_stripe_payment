@@ -26,8 +26,8 @@ router.route("/:id").post(async (req, res) => {
         quantity: 1
       }
     ],
-    customer_email: "puram.calvin@gmail.com",
-    success_url: `http://localhost:8080/book_success/:${Books._id}`,
+
+    success_url: `http://localhost:8080/checkout_success/${book._id}`,
     cancel_url: "http://localhost:8080"
   });
 

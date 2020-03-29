@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import BookSales from "../views/BookSales.vue";
+import checkout from "../views/Checkout.vue";
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: "/bookSales",
     name: "BookSales",
     component: BookSales
+  },
+  {
+    path: "/checkout_success/:id",
+    name: "checkout",
+    component: checkout
   }
 ];
 
