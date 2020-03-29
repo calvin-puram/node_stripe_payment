@@ -16,6 +16,7 @@ const actions = {
       if (res && res.data.success) {
         commit("book_res", res.data.data);
       }
+      return res;
     } catch (err) {
       commit("book_err", err.response.msg);
     }

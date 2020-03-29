@@ -26,30 +26,33 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import Nprogress from "nprogress";
+import store from "../store/index";
 
 export default {
   name: "Home",
   computed: mapGetters(["getBooks", "getSession"]),
-  data() {
-    return {
-      stripe: null
-    };
-  },
-  mounted() {
-    this.stripe = window.Stripe("pk_test_vojJa5IosfOt5PKz2iBn9kzQ00Gyfx4q3o");
+  beforeRouteEnter(to, from, next) {
+    Nprogress.start();
+    store.dispatch("allBooks").then(res => {
+      if (res && res.data.success) {
+        Nprogress.done();
+      }
+      next();
+    });
   },
   methods: {
     ...mapActions(["allBooks", "session"]),
     async buyBook(id) {
+      const stripe = window.Stripe(
+        "pk_test_vojJa5IosfOt5PKz2iBn9kzQ00Gyfx4q3o"
+      );
       await this.session(id);
       console.log(this.getSession);
-      await this.stripe.redirectToCheckout({
+      await stripe.redirectToCheckout({
         sessionId: this.getSession.id
       });
     }
-  },
-  created() {
-    this.allBooks();
   }
 };
 </script>
