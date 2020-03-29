@@ -1,26 +1,24 @@
 <template>
   <div class="container">
     <div v-for="book in getBooks" :key="book.id">
-      <div class="row my-5">
+      <div class="row  ">
         <div class="col-md-6 col-sm-12 text-center">
-          <h1 class="mt-3 pt-3">{{ book.name }}</h1>
+          <h1 class="mt-5 pt-3">{{ book.name }}</h1>
           <p class="lead">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit.
             Voluptatum, non.
           </p>
+          <p class="text-dark">Price: ${{ book.price }}</p>
           <button
             :disabled="getLoader"
             class="btn btn-primary btn-large mt-2"
             @click="buyBook(book._id)"
           >
-            {{ getLoader ? "processing" : "Buy Book" }}
-            <span class="ml-2"
-              ><i class="fas fa-spin fa-spinner" v-if="getLoader"></i
-            ></span>
+            Buy Book
           </button>
         </div>
 
-        <div class="col-md-6 col-sm-12 text-center">
+        <div class="col-md-6 col-sm-12 text-center mt-5">
           <img :src="`img/${book.image}`" alt="book" width="50%" height="70%" />
         </div>
       </div>
