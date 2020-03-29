@@ -3,11 +3,13 @@ const axios = require("axios");
 const state = {
   books: [],
   err: null,
-  session: {}
+  session: {},
+  loader: false
 };
 const getters = {
   getBooks: () => state.books,
-  getSession: () => state.session
+  getSession: () => state.session,
+  getLoader: () => state.loader
 };
 const actions = {
   async allBooks({ commit }) {
@@ -24,10 +26,12 @@ const actions = {
 
   async session({ commit }, id) {
     try {
+      commit("loading_res");
       const res = await axios.post(
         `http://localhost:5000/api/v1/checkout/${id}`
       );
       if (res && res.data.success) {
+        commit("loading_req");
         commit("session_res", res.data.data);
       }
       return res;
@@ -37,6 +41,14 @@ const actions = {
   }
 };
 const mutations = {
+  loading_req(state) {
+    state.loader = true;
+    state.err = null;
+  },
+  loading_res(state) {
+    state.loader = false;
+    state.err = null;
+  },
   book_res(state, data) {
     state.books = data;
     state.err = null;

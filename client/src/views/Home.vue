@@ -9,10 +9,14 @@
             Voluptatum, non.
           </p>
           <button
+            :disabled="getLoader"
             class="btn btn-primary btn-large mt-2"
             @click="buyBook(book._id)"
           >
-            Buy Book
+            {{ getLoader ? "processing" : "Buy Book" }}
+            <span class="ml-2"
+              ><i class="fas fa-spin fa-spinner" v-if="getLoader"></i
+            ></span>
           </button>
         </div>
 
@@ -31,7 +35,7 @@ import store from "../store/index";
 
 export default {
   name: "Home",
-  computed: mapGetters(["getBooks", "getSession"]),
+  computed: mapGetters(["getBooks", "getSession", "getLoader"]),
   beforeRouteEnter(to, from, next) {
     Nprogress.start();
     store.dispatch("allBooks").then(res => {
