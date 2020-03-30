@@ -18,9 +18,7 @@ router.route("/:id").post(async (req, res) => {
       {
         name: book.name,
         description: book.description,
-        images: [
-          "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
-        ],
+        images: [`https://book-sales-app.herokuapp.com/img/${book.image}`],
         amount: book.price * 100,
         currency: "usd",
         quantity: 1
