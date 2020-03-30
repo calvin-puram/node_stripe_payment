@@ -46,15 +46,16 @@ export default {
   methods: {
     ...mapActions(["allBooks", "session"]),
     async buyBook(id) {
-      const stripe = window.Stripe(
-        "pk_test_vojJa5IosfOt5PKz2iBn9kzQ00Gyfx4q3o"
-      );
+      const stripe = window.Stripe(process.env.VUE_APP_STRIPE_PUBLIC);
       await this.session(id);
       console.log(this.getSession);
       await stripe.redirectToCheckout({
         sessionId: this.getSession.id
       });
     }
+  },
+  created() {
+    console.log(process.env.VUE_APP_STRIPE_PUBLIC);
   }
 };
 </script>

@@ -14,7 +14,7 @@ const getters = {
 const actions = {
   async allBooks({ commit }) {
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/books");
+      const res = await axios.get("/api/v1/books");
       if (res && res.data.success) {
         commit("book_res", res.data.data);
       }
@@ -27,9 +27,7 @@ const actions = {
   async session({ commit }, id) {
     try {
       commit("loading_res");
-      const res = await axios.post(
-        `http://localhost:5000/api/v1/checkout/${id}`
-      );
+      const res = await axios.post(`/api/v1/checkout/${id}`);
       if (res && res.data.success) {
         commit("loading_req");
         commit("session_res", res.data.data);

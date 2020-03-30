@@ -5,7 +5,9 @@
 /client/dist
 
 # local env files
+/client/.env
 /client/.env.local
+/client/.env.production
 /client/.env.*.local
 
 # Log files

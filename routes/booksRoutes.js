@@ -14,7 +14,8 @@ router
       });
     } catch (err) {
       res.status(400).json({
-        status: "fail"
+        success: "fail",
+        msg: "invalid credentials"
       });
     }
   })
@@ -28,7 +29,8 @@ router
       });
     } catch (err) {
       res.status(404).json({
-        status: "fail"
+        success: "fail",
+        msg: "no books found"
       });
     }
   });
