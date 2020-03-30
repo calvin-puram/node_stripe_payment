@@ -48,14 +48,11 @@ export default {
     async buyBook(id) {
       const stripe = window.Stripe(process.env.VUE_APP_STRIPE_PUBLIC);
       await this.session(id);
-      console.log(this.getSession);
+
       await stripe.redirectToCheckout({
         sessionId: this.getSession.id
       });
     }
-  },
-  created() {
-    console.log(process.env.VUE_APP_STRIPE_PUBLIC);
   }
 };
 </script>
