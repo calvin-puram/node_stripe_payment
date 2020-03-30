@@ -25,8 +25,8 @@ router.route("/:id").post(async (req, res) => {
       }
     ],
 
-    success_url: `http://localhost:8080/checkout_success/${book._id}`,
-    cancel_url: "http://localhost:8080"
+    success_url: `https://book-sales-app.herokuapp.com/checkout_success/${book._id}`,
+    cancel_url: "https://book-sales-app.herokuapp.com/"
   });
 
   res.status(200).json({
