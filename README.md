@@ -1,6 +1,10 @@
 # Fullstack Nodejs/Vuejs App
 
-this is an app that display list of books where user can purchase a book using stripe API. I developed this app while learning how to integrate payment to Nodejs app.
+this is an app that display list of books where user can purchase a book using stripe API. I developed this app while learning how to integrate payment to Nodejs app. You can check the app live [Here](https://book-sales-app.herokuapp.com/)
+
+![home-image](./public/img/home.png)
+![stripe-image](./public/img/stripe.png)
+![purchase-image](./public/img/pur.png)
 
 ## Usage
 
